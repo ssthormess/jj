@@ -50,6 +50,7 @@ use crate::commit_builder::DetachedCommitBuilder;
 use crate::dag_walk;
 use crate::dag_walk_async;
 use crate::default_index::DefaultMutableIndex;
+use crate::file_util;
 use crate::file_util::IoResultExt as _;
 use crate::file_util::PathError;
 use crate::index::ChangeIdIndex;
@@ -196,7 +197,7 @@ impl ReadonlyRepo {
         index_store_initializer: &IndexStoreInitializer<'_>,
         submodule_store_initializer: &SubmoduleStoreInitializer<'_>,
     ) -> Result<Arc<Self>, RepoInitError> {
-        let repo_path = dunce::canonicalize(repo_path).context(repo_path)?;
+        let repo_path = file_util::canonicalize(repo_path).context(repo_path)?;
 
         let store_path = repo_path.join("store");
         fs::create_dir(&store_path).context(&store_path)?;

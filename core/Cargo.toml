@@ -28,6 +28,7 @@ blake2 = { workspace = true }
 bstr = { workspace = true }
 clru = { workspace = true }
 digest = { workspace = true }
+dunce = { workspace = true }
 either = { workspace = true }
 futures = { workspace = true }
 globset = { workspace = true }
